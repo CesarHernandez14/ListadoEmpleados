@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado empleados</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <section th:fragment="listadoEmpleado" id="empleados">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{personas.titulo-lista}]]</h4>
+                            </div>
+                            <div th:if="${empleados !=null and !empleados.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{empleado.nombre}"></th>
+                                            <th></th>
+                                            <th></th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="empleado, contador : ${empleados}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${empleado.nombre} + ' ' + ${empleado.apellido}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${empleado.idEmpleado}"
+                                                    class="btn btn-secondary">
+                                                    <i class="fas fa-angle-double-right"></i>[[#{accion.editar}]]
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idEmpleado=${empleado.idEmpleado})}"
+                                                    class="btn btn-danger">
+                                                    <i class="fas fa-angle-double-right"></i>[[#{accion.eliminar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${empleados == null or empleados.empty}">
+                                <span th:text="#{empleado.lista-vacia}"> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="col-md-8">
+                        <div class="card text-center bg-danger text-white mb-3">
+                            <div class="card-body">
+                                <!-- busqueda de empleado 
+                                <!--<form class="form-inline my-2 my-lg-0" th:action="@{empleado}">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Serach" name="query"/>
+                                    <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                                     
+                                
+                            </div>
+                        </div>
+                        <div class="card text-center bg-success text-white mb-3">
+                        <div class="card-body">
+                            <!-- Resultados de la busqueda 
+                        </div>
+                    </div>-->
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

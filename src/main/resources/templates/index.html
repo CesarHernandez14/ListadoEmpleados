@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        
+        <header th:replace="layout/plantilla :: header"></header>
+        <section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+        <section th:replace="layout/agregarEmpleado :: agregarEmpleado"></section>
+        <section th:replace="layout/listadoEmpleado :: listadoEmpleado"></section>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+        
+        
+        
+        
+        
+        
+        <!--
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{empleado.crear}]]</a>
+        
+        <div th:if="${empleados != null and !empleados.empty}">
+            <table border="1">
+                <tr>
+                    <th>[[#{empleado.nombre}]]</th>
+                    <th>[[#{empleado.apellido}]]</th>
+                    <th>[[#{empleado.email}]]</th>
+                    <th>[[#{empleado.nacionalidad}]]</th>
+                    <th>[[#{empleado.telefono}]]</th>
+                    <th>[[#{empleado.estado-civil}]]</th>
+                    <th>[[#{empleado.nacimiento}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.editar}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.eliminar}]]</th>
+                </tr>
+                <tr th:each="empleado : ${empleados}">
+                    <td th:text="${empleado.nombre}">Mostrar Nombre</td>
+                    <td th:text="${empleado.apellido}">Mostrar Apellido</td>
+                    <td th:text="${empleado.email}">Mostrar Email</td>
+                    <td th:text="${empleado.nacionalidad}">Mostrar Email</td>
+                    <td th:text="${empleado.telefono}">Mostrar Teléfono</td>
+                    <td th:text="${empleado.estadoCivil}">Mostrar civil</td>
+                    <td th:text="${empleado.fechaNacimiento}">Mostrar fecha</td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/editar/} + ${empleado.idEmpleado}"/>[[#{accion.editar}]]</td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/eliminar(idEmpleado=${empleado.idEmpleado})}"/>[[#{accion.eliminar}]]</td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${empleados == null or empleados.empty}">
+           [[#{empleado.lista-vacia}]]
+        </div>
+        
+        <footer th:replace="layout/plantilla :: footer"></footer>
+        -->
+        
+    </body>
+</html>

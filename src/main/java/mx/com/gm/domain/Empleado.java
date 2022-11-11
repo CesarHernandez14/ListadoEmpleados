@@ -1,0 +1,26 @@
+package mx.com.gm.domain;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "empleado")
+public class Empleado implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idEmpleado;  
+    private String nombre;   
+    private String apellido;
+    private String email;
+    private String nacionalidad;
+    private String telefono;
+    private String estadoCivil;
+    private String fechaNacimiento;
+}
